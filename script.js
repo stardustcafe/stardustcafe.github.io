@@ -204,11 +204,12 @@ const gosperSketch = (p) => {
     };
 };
 
-// Initialize p5 instance when DOM is ready
-if (document.readyState === "complete" || document.readyState === "interactive") {
-    new p5(gosperSketch);
-} else {
-    document.addEventListener("DOMContentLoaded", () => {
+// Initialize p5 instance when whole page is loaded
+window.addEventListener('load', () => {
+    // Determine if p5 is loaded
+    if (typeof p5 !== 'undefined') {
         new p5(gosperSketch);
-    });
-}
+    } else {
+        console.error("P5.js library not loaded.");
+    }
+});
