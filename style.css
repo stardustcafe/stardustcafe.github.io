@@ -295,13 +295,59 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    width: 100%; /* Explicit width */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding-top: 70px;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Hero Text Shadow */
+.hero h1, .hero h2, .hero p {
+    text-shadow: 1px 5px 10px rgba(255, 255, 255, 0.8); /* Light glow for light mode */
+}
+
+[data-theme="dark"] .hero h1, 
+[data-theme="dark"] .hero h2, 
+[data-theme="dark"] .hero p {
+    text-shadow: 0 5px 10px rgba(255, 255, 255, 0.2); /* Dark shadow for dark mode */
+}
+
+/* Ensure content sits above canvas */
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* P5.js Canvas */
+#gosper-container canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0.3;
+    pointer-events: none;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;
+}
+
+/* Hero Typography */
+.hero h1, .hero h2, .hero p {
+    white-space: nowrap;      /* Prevent wrapping */
+    overflow: hidden;         /* Hide overflow if any */
+    text-overflow: ellipsis;  /* Add dots if it really can't fit */
+    max-width: 100%;          /* Ensure it doesn't break layout */
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;       /* Center the block naturally */
+}
+
+/* Specific sizing */
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 10px;
@@ -312,19 +358,35 @@ body {
 }
 
 .hero h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--light-text);
     margin-bottom: 20px;
     font-weight: 500;
+    
+    display: block; 
+    border-right: none;
+    animation: fadeInUp 0.8s forwards 0.2s; 
+    opacity: 0; 
 }
 
 .hero p {
     font-size: 1.2rem;
     color: var(--light-text);
     margin-bottom: 30px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    /* Removed max-width 600px constraint */
+}
+
+/* Responsive Font Scaling to keep single line */
+@media (max-width: 900px) {
+    .hero h1 { font-size: 2.5rem; }
+    .hero h2 { font-size: 1.5rem; }
+    .hero p { font-size: 1rem; }
+}
+
+@media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .hero h2 { font-size: 1.1rem; }
+    .hero p { font-size: 0.9rem; }
 }
 
 .hero-btns {
