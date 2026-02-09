@@ -14,7 +14,4 @@ This repository contains the source code for my personal CV website.
 - HTML5, CSS3, JavaScript
 - FontAwesome Icons
 - Google Fonts (Fira Code)
-
-## Deployment on GitHub Pages
-
-You can deploy this site easily using GitHub Pages. See the [GITHUB_PAGES_GUIDE.md](GITHUB_PAGES_GUIDE.md) for detailed instructions.
+- p5.js using L method to generate gosper curve
