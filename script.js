@@ -118,17 +118,17 @@ const gosperSketch = (p) => {
         
         // Define colors
         const colors = [
-            p.color(59, 130, 246, 100),  // Blue
-            p.color(239, 68, 68, 100),   // Red
-            p.color(37, 99, 235, 100),   // Darker Blue
-            p.color(220, 38, 38, 100)    // Darker Red
+            p.color(59, 130, 246, 150),  // Blue
+            p.color(239, 68, 68, 150),   // Red
+            p.color(37, 99, 235, 150),   // Darker Blue
+            p.color(220, 38, 38, 150)    // Darker Red
         ];
 
         if (document.documentElement.getAttribute("data-theme") === "dark") {
-             colors[0] = p.color(96, 165, 250, 150);
-             colors[1] = p.color(248, 113, 113, 150);
-             colors[2] = p.color(59, 130, 246, 150);
-             colors[3] = p.color(239, 68, 68, 150);
+             colors[0] = p.color(96, 165, 250, 200);
+             colors[1] = p.color(248, 113, 113, 200);
+             colors[2] = p.color(59, 130, 246, 200);
+             colors[3] = p.color(239, 68, 68, 200);
         }
 
         p.strokeWeight(2.0);
@@ -146,8 +146,6 @@ const gosperSketch = (p) => {
         const arms = [
             { rot: 0, col: 0 },
             { rot: 180, col: 1 },
-            { rot: 0, col: 2 },
-            { rot: 180, col: 3 }
         ];
 
         // Increment step animation

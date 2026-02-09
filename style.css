@@ -236,6 +236,12 @@ body {
     padding: 0 20px;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 25px; /* More padding on small screens */
+    }
+}
+
 /* Navbar */
 .navbar {
     position: fixed;
@@ -478,6 +484,42 @@ body {
     box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
 }
 
+/* Gosper Info Button */
+.gosper-info-btn {
+    position: relative; /* Changed from absolute */
+    display: inline-block;
+    margin-top: 30px;
+    z-index: 10;
+    font-size: 0.8rem;
+    color: var(--light-text);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0; 
+    animation: fadeInUp 0.8s forwards 0.8s; /* Delayed fade in */
+}
+
+[data-theme="dark"] .gosper-info-btn {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.gosper-info-btn:hover {
+    opacity: 1;
+    background: var(--card-bg);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.gosper-info-btn i {
+    margin-right: 5px;
+}
+
 /* Animations - Subtle */
 .animate-text {
     opacity: 0;
@@ -506,8 +548,27 @@ body {
         display: block;
     }
     
+    /* Allow wrapping on mobile for better UX */
+    .hero h1, .hero h2, .hero p {
+        white-space: normal;
+        word-wrap: break-word;
+        padding: 0 10px; /* Add padding to prevent edge touching */
+    }
+
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.6;
     }
     
     .timeline-item {
@@ -518,6 +579,10 @@ body {
     .timeline-date {
         text-align: left;
         min-width: auto;
+    }
+
+    .gosper-info-btn {
+        font-size: 0.75rem; /* Slight resize only */
     }
 }
 
