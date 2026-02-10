@@ -86,6 +86,8 @@ const gosperSketch = (p) => {
 
     let currentStep = 0;
     const stepsPerFrame = 5; // Adjust speed here
+    let waitStartTime = null;
+    const loopDelay = 60000; // 60 seconds wait before restarting
 
     p.setup = () => {
         // Force full window size for debugging
@@ -148,10 +150,19 @@ const gosperSketch = (p) => {
             { rot: 180, col: 1 },
         ];
 
-        // Increment step animation
+        // Animation logic with loop
         if (currentStep < sentence.length) {
             currentStep += stepsPerFrame;
-            if (currentStep > sentence.length) currentStep = sentence.length;
+            if (currentStep >= sentence.length) {
+                currentStep = sentence.length;
+                waitStartTime = p.millis(); // Start waiting timer
+            }
+        } else {
+            // Wait for delay then restart
+            if (waitStartTime && (p.millis() - waitStartTime > loopDelay)) {
+                currentStep = 0;
+                waitStartTime = null;
+            }
         }
 
         arms.forEach(arm => {
